@@ -39,7 +39,16 @@ public class GetMethodQuiz08 extends HttpServlet{
 		while (iter.hasNext()) {
 			String line = iter.next();
 			if (line.contains(keyword)) {
-				out.print(line + "<br>");
+				// 1)
+//				line = line.replace(keyword, "<b>" + keyword + "</b>");
+//				out.print(line + "<br>");
+				
+				// 2)
+				String[] words = line.split(keyword);
+				out.print(words[0] + "<b>" + keyword + "</b>" + words[1] + "<br>");
+				
+				// 3)
+				// line.indexOf(keyword) -> keyword가 시작되는 인덱스 번호를 return -> 7
 			}
 		}
 		out.print("</body></html>");

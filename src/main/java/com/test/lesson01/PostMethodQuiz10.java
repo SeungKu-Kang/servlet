@@ -13,16 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/lesson01/quiz10")
 public class PostMethodQuiz10 extends HttpServlet{
 	
+	
+	// doPost 메소드 바깥쪽에 위치
+		private final Map<String, String> userMap =  new HashMap<String, String>() {
+		    {
+		        put("id", "marobiana");
+		        put("password", "qwerty1234");
+		        put("name", "신보람");
+		    }
+		};
+		
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// response header setting
+		
+		// response header setting (filter에 의해 인코딩 생략)
 		response.setContentType("text/html");
 		
 		// request params
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		// 출력
+		// id,pw 일치 확인 => 출력
 		PrintWriter out = response.getWriter();
 		
 		out.print("<html><head><title>사용자 정보 확인</title></head><body>");
@@ -36,12 +47,5 @@ public class PostMethodQuiz10 extends HttpServlet{
 		out.print("</body></html>");
 		
 	}
-	// doPost 메소드 바깥쪽에 위치
-	private final Map<String, String> userMap =  new HashMap<String, String>() {
-	    {
-	        put("id", "marobiana");
-	        put("password", "qwerty1234");
-	        put("name", "신보람");
-	    }
-	};
+	
 }
