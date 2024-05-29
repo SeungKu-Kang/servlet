@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/lesson01/ex03")
 public class GetMethodEx03 extends HttpServlet{
 	
+	
 	@Override
 	public void doGet (HttpServletRequest request , HttpServletResponse response) throws IOException {
 		
+		// stash 테스트용 주석 추가
 		// 테스트용 주석 추가 240528
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/json");
