@@ -11,22 +11,42 @@
 </head>
 <body>
 	<div class="container">
-		<h1>길이 변환 결과</h1>
 		<%
-			int cm = Integer.valueOf(request.getParameter("cm"));
-			double in = cm * 0.393701;
-			double yard = cm * 0.010936;
-			double ft = cm * 0.032808;
-			double m = cm * 0.01;
-			String[] lengthArr = request.getParameterValues("length");
-		%>
-		<h3><%= cm %>cm</h3>
-		<hr>
-		<% 
-			if (lengthArr != null) {
-				
-			}
-		%>
+			int length = Integer.valueOf(request.getParameter("length"));
+		    //out.print(length);
+		    
+		    // 여러 값의 파라미터 한번에 받아오기
+			String[] types = request.getParameterValues("type");
+		%>    	
+		<div>	
+			<h1>길이 변환 결과</h1>
+			<h3><%= length %>cm</h3>
+			<hr>
+			<h2>
+				<%
+					if (types != null) {
+						for (String type : types) { // [inch, meter, feet]
+							if (type.equals("inch")) { // inch
+								double inch = length * 0.393701;
+								out.print(inch + " in<br>");
+							} else if (type.equals("yard")) { // yard
+								double yard = length * 0.0109361;
+								out.print(yard + " yd<br>");
+							} else if (type.equals("feet")) { // feet
+								double feet = length * 0.0328084;
+								out.print(feet + " ft<br>");
+							} else if (type.equals("meter")) { // meter
+								double meter = length * 0.01;
+								out.print(meter + " m<br>");
+							}
+						}
+					}
+				%>
+			</h2>
+		</div>
+		
+		
+
 	</div>
 </body>
 </html>
