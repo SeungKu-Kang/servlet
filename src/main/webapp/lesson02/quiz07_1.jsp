@@ -40,12 +40,20 @@
 		</thead>
 		<tbody>
 			<%
+			
+				String keyword = request.getParameter("keyword");
+				
+				// 4점 이하 제외  체크되면:"true" 체크안되면: null
+				String starFilter = request.getParameter("starFilter");	
+				boolean exclude = starFilter != null; // 체크됨: => ture 4점 이하 제외
+			
 				for (Map<String,Object> item : list) {
-					 if (request.getParameter("keyword").equals(item.get("menu"))) { // 검색어 필터링
-						 if (request.getParameter("starFilter").equals("true")
-								 && (double)item.get("point") > 4.0 ) { // 별점 필터링, 체크가 되어있는 경우
-							 
-
+					 if (keyword.equals(item.get("menu"))) { // 검색어 필터링
+						 // skip 조건이 체크되어 있고 스킵 되어야 할 때 skip(continue)
+						 if (exclude && (double)item.get("point") <= 4.0) {
+							 continue; // 안뿌리고 skip
+						 }
+						 
 			%>
 				<tr>
 					<td><%= item.get("menu") %></td>
@@ -53,7 +61,6 @@
 					<td><%= item.get("point") %></td>
 				</tr>
 			<%
-						 }
 					 }
 				}
 			%>

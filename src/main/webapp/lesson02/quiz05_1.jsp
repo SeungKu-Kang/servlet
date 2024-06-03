@@ -28,7 +28,7 @@
 	%>
 	<h1>계산 결과</h1>
 	<div class="display-4 d-flex">
-		<%= num1 %> <%= symbol %> <%= num2 %> = <%= result %>
+		<%= num1 %> <%= symbol %> <%= num2 %> = <%=  %>
 	</div>
 </body>
 </html>
