@@ -68,22 +68,22 @@
 		<nav class="bg-danger d-flex align-items-center">
 			<ul class="nav nav-fill w-100">
 	  			<li class="nav-item">
-	   				<a class="nav-link" href="#">전체</a>
+	   				<a class="nav-link" href="/lesson02/quiz09.jsp">전체</a>
 	  			</li>
 	  			<li class="nav-item">
-	    			<a class="nav-link" href="#">지상파</a>
+	    			<a class="nav-link" href="/lesson02/quiz09.jsp?category=지상파">지상파</a>
 	  			</li>
 	  			<li class="nav-item">
-	   				<a class="nav-link" href="#">드라마</a>
+	   				<a class="nav-link" href="/lesson02/quiz09.jsp?category=드라마">드라마</a>
 	  			</li>
  				<li class="nav-item">
-	  				<a class="nav-link" href="#">예능</a>
+	  				<a class="nav-link" href="/lesson02/quiz09.jsp?category=예능">예능</a>
 	  			</li>
 	  			<li class="nav-item">
-	   				<a class="nav-link" href="#">영화</a>
+	   				<a class="nav-link" href="/lesson02/quiz09.jsp?category=영화">영화</a>
 	  			</li>
 	  			<li class="nav-item">
-	   				<a class="nav-link" href="#">스포츠</a>
+	   				<a class="nav-link" href="/lesson02/quiz09.jsp?category=스포츠">스포츠</a>
 	  			</li>
 			</ul>
 		</nav>
@@ -98,7 +98,13 @@
 				</thead>
 				<tbody>
 				<%
+					// request param
+					String category = request.getParameter("category");
+				
 					for (Map<String,String> tv : list) {
+						if (category == null || category.equals(tv.get("category"))) {
+						// category null(전체) 또는 category 일치 행
+
 				%>
 					<tr>
 						<td><%= tv.get("ch") %></td>
@@ -106,6 +112,7 @@
 						<td><%= tv.get("category") %></td>
 					</tr>
 				<%
+						}
 					}
 				%>
 				</tbody>
@@ -113,7 +120,7 @@
 		</section>
 
 		
-		<footer class="d-flex align-items-center justify-content-center bg-info">
+		<footer class="d-flex align-items-center justify-content-center">
 			<small>
 				Copyright 2021. marondal All Rights Reserved.				
 			</small>

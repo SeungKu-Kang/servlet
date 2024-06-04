@@ -12,6 +12,8 @@
 
 	<style>
 		#wrap {height:1200px; width:1000px;}
+		.logoBox {color:green;}
+		.logoBox:hover {text-decoration:none; color:green;}
 		#searchBox {width:400px;}
 		.link {font-weight-bold;}
 		.nav-link {color:#000;}
@@ -102,19 +104,21 @@
 <body>
 	<div id="wrap" class="container text-center my-4">
 		<header class="d-flex">
-			<div class="logo">
-				<h3 class="text-success mr-5">Melong</h3>
+			<div class="logo mr-4">
+				<label><a class="mr-5 logoBox" href="/lesson02/quiz10.jsp"><h3>Melong</h3></a></label>
 			</div>
 			<div class="search">
 				<form method="get" action="/lesson02/quiz10_1.jsp">
 					<div class="input-group ml-3">
-  						<input id="searchBox" type="text" class="form-control">
-    					<button type="submit" class="btn btn-info">검색</button>
+  						<input id="searchBox" name="search" type="text" class="form-control">
+  						<div class="input-group-append">
+	    					<button type="submit" class="btn btn-info">검색</button>						
+  						</div>
 					</div>
 				</form>
 			</div>
 		</header>
-		<div class="contents mt-4">
+		<div class="contents mt-2">
 			<nav class="menu d-flex align-items-center mb-3">
 				<ul class="nav nav-fill w-100">
 					<li class="font-weight-bold"><a class="nav-link" href="#">멜롱챠트</a></li>
@@ -130,7 +134,7 @@
 				%>
 			</nav>
 			<div class="artistInfo d-flex border border-success w-100 p-4">
-				<img src="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG" alt="아이유" width="200px">
+				<img src="<%=artistInfo.get("photo") %>" alt="가수 이미지" width="200px">
 				<div class="text-left ml-3">
 					<h3 class="font-weight-bold"><%= artistInfo.get("name") %></h3>
 					<h5><%= artistInfo.get("agency") %></h5>
@@ -166,7 +170,9 @@
 		</div>
 		<footer class="text-left">
 			<hr>
-			<small class="text-secondary">Copyright 2021. melong All Rights Reserved</small>
+			<div class="ml-2">
+				<small class="text-secondary">Copyright 2021. melong All Rights Reserved</small>			
+			</div>
 		</footer>
 	</div>
 </body>
